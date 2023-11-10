@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2023 Encorajarte" />
+    <meta name="authors"
+        content="Amanda M de Souza, Guilherme D Silva, Luiz Gustavo M Santos, Pedro R Vidigal, Giovanni B S Duarte, Vitor N Calhau" />
+    <meta name="description" content="Sistema de gerenciamento e divulgação de campanhas beneficentes artísticas" />
+    <meta name="keywords" content="controle, gerenciamento" />
+    <!-- Style -->
+    <!-- Bootstrap v4.0 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Main -->
+    <link rel="stylesheet" href="../css/global.css">
+
+    <link rel="stylesheet" href="../css/campanhas.css">
+
+    <!-- Script -->
+    <!-- Bootstrap v4.0 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"
+        defer></script>
+    <!-- Main -->
+    <script src="../js/homepage.js" defer></script>
+    <script src="../js/gerenciarCampanha.js" defer></script>
+    <script src="../js/campanhas.js" defer></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <!-- Título da página -->
+    <title>Campanha</title>
+</head>
+
+
+
+<header>
+    <div class="cabecalho">
+        <div class="cabecalho_e">
+            <a href="../index.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
+        </div>
+        <div class="cabecalho_d">
+
+            <div class="cabecalho_btns">
+                <nav>
+                    <a class="btnTipo1">CONTATE-NOS</a>
+                    <a href="homepage.html#sobre_nos" class="btnTipo1">SOBRE NÓS</a>
+                    <a class="btnTipo2" id="loginBtn">LOGIN</a>
+                    <a href="../public/campanhas.html" class="btnTipo2">DOE AGORA</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close" id="closeBtn">&times;</span>
+        <h2>Login</h2>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+        <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+    </div>
+</div>
+
+
+<body onload="onload()">
+
+    <div class="pesquisa">
+        <p class="pesquisa_texto">Pesquisar por campanha:</p>
+        <input type="text" class="entrada_pesquisa" id="pesquisa" onkeyup="pesquisarCampanha()">
+    </div>
+
+    <div class="cards">
+
+        <!--<div class="card_parceiro">
+
+            <div class="foto_parceiro" style="background-image: url('../assets/img/cardcampanha3.avif');">
+
+                <div class="botao_doar">
+                    <button class="botao">Doar</button>
+                </div>
+            </div>
+
+            <div class="info_parceiro">
+
+                <div class="nome">
+                    <h2>Parceiro 1 - Campanha 2</h2>
+                </div>
+                <div class="infos">
+                    <div class="info">
+                        <p class="objetivo">Objetivo da campanha: Lorem ipsum dolor, sit amet consectetur adipisicing
+                            elit. Amet officiis excepturi natus architecto harum, eaque corporis minus voluptates,
+                            repellat, maxime deleniti cum nulla! Dolore excepturi quas ducimus temporibus, debitis atque
+                            sunt? Aperiam velit voluptates cum omnis maxime laboriosam ducimus? Earum!</p>
+                        <p class="nosso_trabalho">Nosso trabalho: Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Sit distinctio perspiciatis officia saepe numquam cupiditate, suscipit nihil sint?
+                            Eaque doloribus hic modi. Delectus quia eveniet necessitatibus quidem minima nobis
+                            dignissimos?</p>
+                    </div>
+                    <div class="site">
+                        <p class="site_do_parceiro">Nosso site: www.alecrimdourado.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card_parceiro">
+
+            <div class="foto_parceiro" style="background-image: url('../assets/img/cardcampanha3.avif');">
+
+                <div class="botao_doar">
+                    <button class="botao">Doar</button>
+                </div>
+            </div>
+
+            <div class="info_parceiro">
+
+                <div class="nome">
+                    <h2>Parceiro 1 - Campanha 3</h2>
+                </div>
+                <div class="infos">
+                    <div class="info">
+                        <p class="objetivo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi illo
+                            deleniti modi maxime dicta, veniam eveniet, alias qui labore blanditiis sunt hic natus
+                            commodi at similique ad quos a laudantium, ea ipsam aliquam sequi amet ratione officiis.
+                            Molestiae fugiat veniam beatae eius assumenda cum ratione sed incidunt! Voluptates odio
+                            nesciunt id, cumque impedit, excepturi accusamus dolorem similique voluptatibus, saepe
+                            ut.</p>
+                        <p class="nosso_trabalho">Nosso trabalho: Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Sit distinctio perspiciatis officia saepe numquam cupiditate, suscipit nihil sint?
+                            Eaque doloribus hic modi. Delectus quia eveniet necessitatibus quidem minima nobis
+                            dignissimos?</p>
+                    </div>
+                    <div class="site">
+                        <p class="site_do_parceiro">Nosso site: www.tristeza.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card_parceiro">
+
+            <div class="foto_parceiro" style="background-image: url('../assets/img/cardcampanha3.avif');">
+
+                <div class="botao_doar">
+                    <button class="botao">Doar</button>
+                </div>
+            </div>
+
+            <div class="info_parceiro">
+
+                <div class="nome">
+                    <h2>Parceiro 3 - Campanha 5</h2>
+                </div>
+                <div class="infos">
+                    <div class="info">
+                        <p class="objetivo">Objetivo da campanha: </p>
+                        <p class="nosso_trabalho">Nosso trabalho: </p>
+                    </div>
+                    <div class="site">
+                        <p class="site_do_parceiro">Nosso site: </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card_parceiro">
+
+            <div class="foto_parceiro" style="background-image: url('../assets/img/cardcampanha3.avif');">
+
+                <div class="botao_doar">
+                    <button class="botao">Doar</button>
+                </div>
+            </div>
+
+            <div class="info_parceiro">
+
+                <div class="nome">
+                    <h2>Parceiro 1 - Campanha 4</h2>
+                </div>
+                <div class="infos">
+                    <div class="info">
+                        <p class="objetivo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque
+                            unde perspiciatis suscipit corporis est sint iste odio rem. Delectus ut ea quod
+                            quos reprehenderit vel sunt quas odit quo nulla.
+
+                        </p>
+                        <p class="nosso_trabalho">Nosso trabalho: Lorem ipsum dolor, sit amet consectetur
+                            adipisicing elit. Eum, repudiandae illo. Exercitationem ipsum perferendis sequi
+                            labore delectus eum tempora, aliquam doloribus suscipit possimus laborum, quidem
+                            temporibus veniam quo nihil. Neque a minima nulla velit ea eos, voluptates amet.
+                            Nam libero eius quibusdam asperiores consequatur, eos dolor animi quod, autem
+                            voluptatem expedita explicabo? Eligendi adipisci accusantium animi fugit
+                            nesciunt perferendis qui, atque corporis hic corrupti deleniti, eius veritatis
+                            placeat suscipit officia.</p>
+                    </div>
+                    <div class="site">
+                        <p class="site_do_parceiro">Nosso site: www.romanov.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card_parceiro">
+
+            <div class="foto_parceiro" style="background-image: url('../assets/img/cardcampanha3.avif');">
+
+                <div class="botao_doar">
+                    <button class="botao">Doar</button>
+                </div>
+            </div>
+
+            <div class="info_parceiro">
+
+                <div class="nome">
+                    <h2>Parceiro 2 - Campanha 1</h2>
+                </div>
+                <div class="infos">
+                    <div class="info">
+                        <p class="objetivo">Objetivo da campanha: Lorem ipsum dolor, sit amet
+                            consectetur adipisicing
+                            elit. Amet officiis excepturi natus architecto harum, eaque corporis minus
+                            voluptates,
+                            repellat, maxime deleniti cum nulla! Dolore excepturi quas ducimus
+                            temporibus, debitis atque
+                            sunt? Aperiam velit voluptates cum omnis maxime laboriosam ducimus? Earum!
+                        </p>
+                        <p class="nosso_trabalho">Nosso trabalho: Lorem ipsum, dolor sit amet
+                            consectetur adipisicing elit. Fugit excepturi soluta nostrum sint ullam?
+                            Tenetur qui odio porro ea quisquam accusamus libero amet, quos illo sequi
+                            quaerat optio aliquid fugiat consequuntur magni ducimus in assumenda sit et
+                            ex laudantium, nam ad numquam velit! Recusandae repudiandae odit
+                            reprehenderit. Doloribus delectus sit nihil, rem incidunt, ipsum nulla
+                            nostrum ipsa iusto, molestias quia?</p>
+                    </div>
+                    <div class="site">
+                        <p class="site_do_parceiro">Nosso site: www.abacaxivegano.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+    </div>
+</body>
+
+
+</html>

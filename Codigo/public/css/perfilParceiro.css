@@ -1,0 +1,134 @@
+
+.Title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;  
+    margin:1% 5%;
+}
+.form-section{
+    background-color: rgba(169, 169, 169, 0.698);
+    padding: 40px;
+    border-radius: 15px;
+}
+.form-section-image{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(169, 169, 169, 0.698);
+    padding: 40px;
+    border-radius: 15px;
+}
+.Dados{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.Imagem{
+    width: 50%;
+    margin-right: 10%;
+}
+.nomeParceiro{
+    text-align: center;
+    flex-grow: 1;
+}
+
+.botaoDeletar{
+    margin-right:10% ;
+}
+
+.form-section > input{
+    border-radius: 8px;
+    border: 0.5px solid #999999;
+    background-color: #F0F0F0;
+    width: 500px;
+    padding: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    
+}
+
+.Dados > input{
+    border-radius: 8px;
+    border: 0.5px solid #999999;
+    background-color: #F0F0F0;
+    width: 300px;
+    padding: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    
+}
+#nomeAlter{
+    border-radius: 8px;
+    border: 0.5px solid #999999;
+    background-color: #F0F0F0;
+    width: 300px;
+    padding: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.Objetivo{
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    padding: 10px;
+}
+
+textarea{
+    border: 0.5px solid #999999;
+    border-radius: 20px;
+    background-color: #F0F0F0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    resize: none;
+}
+
+.imgPreview{
+    border: 0.5px solid #999999;
+    border-radius: 20px;
+    background-color: #F0F0F0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.Dados > button{
+    float: right;
+    width: 200px;
+    background-color: #F0F0F0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 0.5px solid #999999;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.Dados > button:hover{
+    width: 200px;
+    color: #F0F0F0;
+    background-color: #676666;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 0.5px solid #999999;
+    padding: 20px;
+}
+
+.Title > button:hover{
+    width: 200px;
+    background-color: #b45959;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 0.5px solid #999999;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.Title > button{
+    width: 200px;
+    background-color: #F0F0F0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 0.5px solid #999999;
+    padding: 20px;
+    font-size: 20px;
+}

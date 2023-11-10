@@ -1,0 +1,75 @@
+header{
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0; 
+    padding: 0; 
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.formulario-esquerda {
+    float: left;
+    width: 45%;
+    margin-right: 5%;
+}
+
+.formulario-direita {
+    float: left;
+    width: 45%;
+}
+
+.formulario label {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="file"] {
+    margin-top: 5px;
+}
+
+
+.botao-confirmar{
+    display: flex;
+    justify-content: end;
+}
+
+input[type="submit"] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: left;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+

@@ -1,0 +1,247 @@
+/*======================================================================================================*/
+html {
+    scroll-snap-type: y mandatory;
+}
+body {
+    scroll-snap-type: y mandatory;
+  }
+  /*======================================================================================================*/
+  html {
+      scroll-snap-type: y mandatory;
+  }
+  body {
+      scroll-snap-type: y mandatory;
+    }
+  /*======================================================================================================*/
+  .tudo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  /*======================================================================================================*/
+  /*======================================================================================================*/
+  /*----------------------------------------------------------*/
+  .carrossel {
+    margin-top: -8px;
+
+  }
+  .carrossel img {
+    width: 80%;
+    height: 600px;
+    object-fit: cover;
+
+  }
+  /*----------------------------------------------------------*/
+  .info_campanha {
+    width: 80%;
+    height: 370px;
+    padding-left: 10px;
+    box-shadow: 3px 5px 15px rgb(0, 0, 0);
+    margin-bottom: 20px;
+    padding: 30px;
+    }
+    .titulo_info {
+        display: flex;
+        justify-content: center;
+        font-family: Verdana, sans-serif;
+    }
+  /*----------------------------------------------------------*/
+  .parceiros {
+      padding: 23px;
+      background-repeat: no-repeat;
+      height: 270px;
+      /* border-radius: 10px; */
+      box-shadow: 3px 5px 15px rgb(0, 0, 0);
+      overflow: auto;
+  
+  }
+  .xxx {
+      display: flex;
+      /* background-color: aqua; */
+  }
+  /* .titulo_info {
+      font-size: 30px;
+      margin: 0px;   
+      margin-bottom: 15px;
+      background-color: white;
+  }
+  .parceiro_dados {
+      display: flex;
+      flex-direction: row;
+  
+  }
+  .img_parceiro {
+      width: 165px;
+      height: 165px;
+      border-radius: 10px;
+      margin-right: 15px;
+  }
+  .info_parceiro {
+      padding: 5px;
+      width: 70%;
+  
+  }
+  .info{
+      margin-bottom: 10px;
+      font-size: 15px;
+  } */
+  /*----------------------------------------------------------*/
+  /*======================================================================================================*/
+  /*======================================================================================================*/
+  /*----------------------------------------------------------*/
+  .direita {
+      width: 50%;
+      /* background-color: rgb(159, 159, 241); */
+      padding: 25px;
+  }
+  /*----------------------------------------------------------*/
+  
+  /* .infos_campanha {
+      padding-left: 8px;
+  }
+  .direita_meio {
+      display: flex;
+      justify-content: center;
+  }
+  .box_valor {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+  
+      width: 98%;
+      height: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      background-color: rgb(124, 194, 20);
+      box-shadow: 3px 5px 15px rgb(0, 0, 0);
+      border-radius: 10px;
+  }
+  .metas {
+      margin: 0px;
+  } */
+  /*----------------------------------------------------------*/
+  .direita_baixo {
+      display: flex;
+      padding: 15px 0px;
+  }
+  .pix {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
+  }
+  .caixa_de_doar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgb(167, 167, 167);
+      border-radius: 10px;
+      width: 200px;
+      height: 250px;
+  }
+  .caixa_de_input {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      background-color: white;
+      width: 160px;
+      height: 160px;
+  }
+  #quantidade_doada{
+      width: 150px;
+  }
+  .btn_doar {
+      font-size: 20px;
+      margin-top: 17px;
+      border-radius: 10px;
+      border: none;
+      padding: 5px;
+  }
+  .btn_denunciar {
+      font-size: 18px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: rgb(243, 129, 129);
+  }
+  .btn_doar:hover, .btn_denunciar:hover{
+      cursor: pointer;
+      /* background: linear-gradient(to right, rgb(255, 114, 114), red); */
+  }
+  
+  
+  .comentarios {
+      display: flex;
+      flex-direction: column;
+      background-color: rgb(112, 110, 111);
+      margin-left: 20px;
+      width: 690px;
+      height: 320px;
+      overflow:auto; 
+      border-radius: 10px;
+  }
+  .cmt_titulo {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      margin: 0px;
+  }
+  .caixa_comentario {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+     
+  }
+  .nome_usuario {
+      margin-left: 25px;
+      margin-bottom: 5px;
+  }
+  .img_cmt {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: 15px;
+      width: 90%;
+  }
+  .img_perfil {
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+  }
+  .comentario {
+      background-color: aliceblue;
+      margin: 0px;
+      margin-left: 15px;
+      width: 100%;
+  }
+  
+  .entrada_comentario {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      position: fixed;
+      margin-top: 290px;
+      width: 32.8%;
+  }
+  .entrada {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 3px 5px 15px rgb(0, 0, 0);
+      width: 100%;
+  }
+  .btn_confirma_envio {
+  
+  }
+  /*----------------------------------------------------------*/
+  /*======================================================================================================*/
+  /*======================================================================================================*/

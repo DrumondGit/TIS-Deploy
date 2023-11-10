@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Metadata -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="copyright" content="© 2023 Encorajarte" />
+    <meta
+      name="authors"
+      content="Amanda M de Souza, Guilherme D Silva, Luiz Gustavo M Santos, Pedro R Vidigal, Giovanni B S Duarte, Vitor N Calhau"
+    />
+    <meta
+      name="description"
+      content="Sistema de gerenciamento e divulgação de campanhas beneficentes artísticas"
+    />
+    <meta name="keywords" content="controle, gerenciamento" />
+
+
+    <!-- Main -->
+    <link rel="stylesheet" href="/Codigo/css/userPage.css" /> 
+    <link rel="stylesheet" href="/Codigo/css/global.css"> 
+    <script src="/Codigo/js/userPage.js" defer></script>
+
+
+    <title>Perfil do usuário</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="cabecalho">
+          <div class="cabecalho_e">
+              <img id="logo" src="/Codigo/assets/img/encorajarte_logo.jpeg">
+          </div>
+          <div class="cabecalho_d">
+  
+              <div class="cabecalho_btns">
+                  <nav>
+                      <a class="btnTipo1">CONTATE-NOS</a>
+                      <a class="btnTipo1">SOBRE NÓS</a>
+                      <a class="btnTipo2" id="loginBtn">LOGIN</a>
+                      <a class="btnTipo2">DOE AGORA</a>
+                  </nav>
+              </div>
+          </div>
+  
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="dados">
+        <div class="sectionDados" id="sectionDados">
+        </div>
+        <div class="sectionAlterarDados">
+          <h3>Alterar dados</h3>
+          <p>Novo nome:</p>
+          <input type="text" type="text" id="nome" />
+          <p>Nova senha:</p>
+          <input type="text" type="password" id="senha"/>
+          <button class="botaoAlterar" onclick="alterarDados()" >Confirmar Mudanças</button>
+        </div>
+      </div>  
+      <div class="doacao">
+        <h2>Suas doações</h2>
+        <div class="cards" id="cards">
+        </div>    
+  
+      </div>
+    </div>
+  </body>
+</html>

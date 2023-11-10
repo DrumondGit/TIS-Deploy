@@ -1,0 +1,70 @@
+h2 {
+    margin: 0;
+    width: fit-content;
+    padding: 10px;
+}
+
+#titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+main { 
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    text-align: center;
+    width: 48%;
+    padding: 10px;
+}
+
+body>button {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+
+div.carousel-item>img {
+    height: 200px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.selecao {
+    display: flex;
+    flex-direction: column;
+}
+
+.selecao>button.btn-outline-dark {
+    width: fit-content;
+    margin-top: 8px;
+}
+
+.selecao>button.btn-outline-dark:focus {
+    color: white;
+    background-color: rgb(56, 56, 56);
+}
+
+#containNovaImagem{
+    display: none;
+}
+
+@media (max-width: 768px){
+
+    body>button {
+        position: static;
+    }
+}
+
+@media (max-width: 768px){
+
+    section {
+        width: 98%;
+    }
+}

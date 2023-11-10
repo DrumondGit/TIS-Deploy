@@ -1,0 +1,144 @@
+/*CABEÇALHO*/
+/*========================================================================================================================*/
+/*-------------------------------------------*/
+.cabecalho {
+    height:90px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 1px 5px rgb(104, 104, 104);
+    margin-bottom: 10px;
+
+}
+
+.cabecalho_e { /*<img id="img_cabecalho" src="assets/img/img_cabecalho.png">*/
+    height:90px;
+}
+
+.cabecalho_d { /*<img id="img_cabecalho" src="assets/img/img_cabecalho.png">  //  assets/img/encorajarte_logo.jpeg*/
+    width: 1000px; height:90px;
+    background-image: url("/Codigo/assets/img/img_cabecalho.png");
+    background-repeat: no-repeat;
+
+    background-position: right top;
+    background-attachment: fixed;
+    background-size: 950px;
+}
+
+.cabecalho_btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height:90px;
+}
+
+.btnTipo1 {
+    color: #000 !important; 
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btnTipo1:hover {
+    background-color: #ffffff80;
+}
+
+.btnTipo2 {
+   
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #000;
+    color: aliceblue !important;
+    cursor: pointer;
+}
+.btnTipo2:hover {
+    background-color: rgb(49, 49, 49);
+}
+
+#logo {
+    height: 90px;
+}
+
+#img_cabecalho {
+    height: 100px;
+}
+/*-------------------------------------------*/
+
+/*modal login*/
+/*-------------------------------------------*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#loginModal .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    max-width: 500px; 
+    margin: 300px auto; 
+}
+
+#loginModal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#loginModal form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#loginModal label {
+    font-weight: bold;
+}
+
+#loginModal input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#loginModal button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#loginModal button:hover {
+    background-color: #555;
+}
+/*-------------------------------------------*/
+
+
+.imgPreview{
+    height: 300px;
+    width: 100%;
+}
+
+.imgPreview>img{
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*========================================================================================================================*/

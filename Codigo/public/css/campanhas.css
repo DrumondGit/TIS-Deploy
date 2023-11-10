@@ -1,0 +1,125 @@
+/*O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O*/
+/*pesquisa*/
+.pesquisa {
+    display: flex;
+    justify-content: end;
+    margin: 40px;
+}
+
+.entrada_pesquisa {
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.pesquisa_texto {
+    display: flex;
+    margin-bottom: 0px;
+}
+
+/*O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O*/
+/*cards*/
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    min-width: 70%;
+}
+
+.card_parceiro {
+    background-color: #ddf1f8;
+    display: flex;
+    padding: 25px;
+    margin: 10px 25px;
+    
+    /*border-style: dashed;*/
+    border-radius: 10px;
+    /*border-color: black;*/
+    box-shadow: 1px 3px 5px rgb(104, 104, 104);
+
+    
+    width: 1400px;
+    max-height: 261px;
+    
+}
+
+/*O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O*/
+/*card*/
+
+.foto_parceiro {
+    width: 205px;
+    height: 205px;
+    /*background-image: url(/Codigo/assets/img/cardcampanha3.avif);*/
+    background-repeat: no-repeat;
+    background-size: 205px;
+    border-radius: 10px;
+}
+
+.foto {
+    width: 205px;
+    height: 205px; 
+    
+}
+
+.info_parceiro {
+   margin-left: 15px;
+    
+}
+
+.botao_doar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 205px;
+    height: 205px;
+    
+}
+
+.botao {
+    justify-content: center;
+    border-radius: 10px;
+    height: 35px;
+
+    border-width: 1px;
+    border-color: gray;
+
+    background-color: white;
+
+    margin-bottom: 10px;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: rgb(164, 217, 252);
+}
+
+/*-------------------------------------------*/
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    margin: 0px;
+    justify-content: space-between
+}
+
+.info {
+    margin-left: 15px;
+}
+
+.objetivo, .meta, .nosso_trabalho {
+    font-size: 14px;
+    margin: 0px;
+    margin-bottom: 7px;
+}
+
+.site {
+    display: flex;
+}
+
+.oculto {
+    display: none;
+}
+/*O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O=O*/
+

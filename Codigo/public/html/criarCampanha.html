@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/criarCampanha.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <title>Criação de Campanhas</title>
+    <script src="../js/gerenciarCampanha.js" defer></script>
+</head>
+
+
+
+<body onload="listarParceiro()">
+    <header>
+        <div class="cabecalho">
+            <div class="cabecalho_e">
+                <a href="../index.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
+            </div>
+            <div class="cabecalho_d">
+
+                <div class="cabecalho_btns">
+                    <nav>
+                        <a class="btnTipo1">CONTATE-NOS</a>
+                        <a class="btnTipo1">SOBRE NÓS</a>
+                        <a class="btnTipo2" id="loginBtn">LOGIN</a>
+                        <a class="btnTipo2">DOE AGORA</a>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <h1>Criação de Campanhas</h1>
+    <form class="formulario" action="processar_campanha.php" method="post" enctype="multipart/form-data">
+        <div class="formulario-esquerda">
+            <label for="nome_campanha">Nome da Campanha:</label>
+            <input type="text" id="nome_campanha" name="nome_campanha" required>
+
+            <label for="objetivo">Objetivo:</label>
+            <input type="text" id="objetivo" name="objetivo" required>
+
+        </div>
+
+        <div class="formulario-direita">
+            <label for="finalidade">Para que será usado os fundos arrecadados:</label>
+            <textarea id="finalidade" name="finalidade" required></textarea>
+
+            <label for="site_campanha">Site da Campanha:</label>
+            <input type="url" id="site_campanha" name="site_campanha" required>
+
+            <label for="meta">Meta (em dinheiro):</label>
+            <input type="number" id="meta" name="meta" required>
+
+            <label for="parceiro">Escolha um parceiro:</label>
+            <select id="parceiro" name="parceiro">
+                <option value="parceiro1">Parceiro 1</option>
+                <option value="parceiro2">Parceiro 2</option>
+                <option value="parceiro3">Parceiro 3</option>
+            </select>
+            <label for="imagem">Adicionar Imagem:</label>
+            <input type="file" id="imagem" name="imagens" accept="image/*" onchange="adicionarImagem(this)">
+
+            <ul id="lista-imagens">
+                <!-- Aqui as imagens selecionadas serão exibidas com os nomes e a opção de exclusão -->
+            </ul>
+            <label for="foto_perfil">Alterar foto de perfil:</label>
+            <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" required>
+        </div>
+
+        <div style="clear:both;"></div>
+
+        <div class="botao-confirmar">
+            <input onclick="criarCampanha()" type="button" value="Criar Campanha">
+        </div>
+
+    </form>
+
+    <script>
+        function adicionarImagem(input) {
+            const listaImagens = document.getElementById('lista-imagens');
+
+            for (let i = 0; i < input.files.length; i++) {
+                const imagem = input.files[i];
+                const li = document.createElement('li');
+
+                const nomeImagem = document.createElement('span');
+                nomeImagem.textContent = imagem.name;
+                li.appendChild(nomeImagem);
+
+                const btnExcluir = document.createElement('button');
+                btnExcluir.textContent = 'Excluir';
+                btnExcluir.addEventListener('click', function () {
+                    listaImagens.removeChild(li);
+                });
+                li.appendChild(btnExcluir);
+
+                listaImagens.appendChild(li);
+            }
+        }
+    </script>
+</body>
+
+</html>

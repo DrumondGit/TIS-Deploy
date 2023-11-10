@@ -1,0 +1,16 @@
+form>div>label {
+    margin-top: 5px;
+}
+
+form>button {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+
+@media (max-width: 768px){
+
+    form>button {
+        position: static;
+    }
+}

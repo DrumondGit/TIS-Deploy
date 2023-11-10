@@ -1,0 +1,11 @@
+npm init -y
+
+Dependencias necessárias:
+npm install dotenv cors express pg
+
+Instalar dependencias que ja ta no projeto:
+npm install
+
+Inicializar o server:
+cd Codigo
+node server.js

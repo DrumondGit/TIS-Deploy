@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2023 Encorajarte" />
+    <meta name="authors"
+        content="Amanda M de Souza, Guilherme D Silva, Luiz Gustavo M Santos, Pedro R Vidigal, Giovanni B S Duarte, Vitor N Calhau" />
+    <meta name="description" content="Sistema de gerenciamento e divulgação de campanhas beneficentes artísticas" />
+    <meta name="keywords" content="controle, gerenciamento" />
+    <!-- Style -->
+    <!-- Bootstrap v4.0 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Main -->
+    <link rel="stylesheet" href="../css/global.css">
+
+    <link rel="stylesheet" href="../css/homepage.css">
+
+    <!-- Script -->
+
+    <!-- Bootstrap v4.0 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"
+        defer></script>
+    <!-- Main -->
+    <script src="../script.js" defer></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <!-- Título da página -->
+    <title>Encorajarte - Home page</title>
+</head>
+
+
+
+<header>
+    <div class="cabecalho">
+        <div class="cabecalho_e">
+            <a href="../index.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>   
+        </div>
+        <div class="cabecalho_d">
+
+            <div class="cabecalho_btns">
+                <nav>
+                    <a class="btnTipo1">CONTATE-NOS</a>
+                    <a href="homepage.html#sobre_nos" class="btnTipo1">SOBRE NÓS</a>
+                    <a class="btnTipo2" id="loginBtn">LOGIN</a>
+                    <a href="../html/campanhas.html" class="btnTipo2">DOE AGORA</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close" id="closeBtn">&times;</span>
+        <h2>Login</h2>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button onclick="login()" type="button">Entrar</button>
+        </form>
+        <p>Não tem uma conta? <a href="../html/cadastro.html">Cadastre-se</a></p>
+    </div>
+</div>
+
+
+<body>
+
+    <div class="carrossel-foda">
+        
+        <div class="slides">
+
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+
+            <div class="slide first">
+                <img src="../assets/img/carrosel1.jpg" alt="Imagem 1" />
+            </div>
+
+            <div class="slide">
+                <img src="../assets/img/carrosel2.avif" alt="Imagem 2" />
+            </div>
+
+            <div class="slide">
+                <img src="../assets/img/carrosel3.jpeg" alt="Imagem 3" />
+            </div>
+
+            <div class="slide">
+                <img src="../assets/img/carrosel4.jpg" alt="Imagem 4" />
+            </div>
+
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn1"></div>
+                <div class="auto-btn1"></div>
+                <div class="auto-btn1"></div>
+            </div>
+
+        </div>
+
+
+        <div class="manual-navigation">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+        </div>
+
+
+      
+       
+    </div>
+
+
+    <div class="cards-campanhas">
+
+
+        <div class="card-tipo-c" id="card-c-1">
+            <div>
+                <img class="card-imagem-campanha" src="../assets/img/WhatsApp Image 2023-09-18 at 16.49.25.jpeg">
+            </div>
+            <div class="card-nome-campanha">
+                <label class="nome-campanha">CAMPANHA 1</label>
+            </div>
+            <div class="card-btn-doacao">
+                <button class="botao-c">
+                    DOAR
+                </button>
+            </div>
+        </div>
+
+        <div class="card-tipo-c" id="card-c-2">
+            <div>
+                <img class="card-imagem-campanha" src="../assets/img/WhatsApp Image 2023-09-18 at 16.50.14.jpeg">
+            </div>
+            <div class="card-nome-campanha">
+                <label class="nome-campanha">CAMPANHA 2</label>
+            </div>
+            <div class="card-btn-doacao">
+                <button class="botao-c">
+                    DOAR
+                </button>
+            </div>
+        </div>
+
+        <div class="card-tipo-c" id="card-c-3">
+            <div>
+                <img class="card-imagem-campanha" src="../assets/img/campanha_img_1.png">
+            </div>
+            <div class="card-nome-campanha">
+                <label class="nome-campanha">CAMPANHA 3</label>
+            </div>
+            <div class="card-btn-doacao">
+                <button class="botao-c">
+                    DOAR
+                </button>
+            </div>
+        </div>
+
+        <div class="card-tipo-c" id="card-c-4">
+            <div>
+                <img class="card-imagem-campanha" src="../assets/img/WhatsApp Image 2023-09-18 at 16.49.51.jpeg">
+            </div>
+            <div class="card-nome-campanha">
+                <label class="nome-campanha">CAMPANHA 4</label>
+            </div>
+            <div class="card-btn-doacao">
+                <button class="botao-c">
+                    DOAR
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="sobre-nos">
+        <h1 id="sobre_nos" class="titulo-sobre-nos">SOBRE NÓS</h1>
+        <p class="info-sobre-nos">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis pariatur asperiores nisi non hic, deleniti quidem, sunt delectus consequatur tempora culpa cumque dolor! Facere, recusandae. Culpa rem maxime, saepe esse facere ut hic dolorem ea, pariatur fuga alias in repellendus provident ipsam inventore consequatur nam at minus suscipit neque enim quos? Veniam quidem officia necessitatibus placeat eveniet at fugit labore ipsa perferendis nesciunt minus corporis doloremque voluptatum quasi cum incidunt aspernatur enim, voluptates omnis dolore eum id? Ex minus perspiciatis odit culpa voluptatum facere voluptatem vero, rem exercitationem ratione ea nesciunt magnam at deserunt non! Dolor maxime esse temporibus consequuntur.</p>
+    </div>
+        
+    
+
+        
+    <h1 class="titulo-parceiros">PARCEIROS DA ENCORAJARTE</h1>
+    <div class="cards-parceiros">
+
+        <div class="card-tipo-p">
+            <div class="card-nome-parceiro">
+                <label class="nome-parceiro">PARCEIRO 1</label>
+            </div>
+            <div>
+                <img class="card-imagem-parceiro" src="../assets/img/parceiro1.png">
+            </div>
+            <div class="card-btn-doacao">
+                <button class="botao-p">
+                    CAMPANHAS
+                </button>
+            </div>
+        </div>
+
+        <div class="card-tipo-p">
+            <div class="card-nome-parceiro">
+                <label class="nome-parceiro">PARCEIRO 2</label>
+            </div>
+            <div>
+                <img class="card-imagem-parceiro" src="../assets/img/parceiro2.png">
+            </div>
+            <div class="card-btn-doacao">
+                <button class="botao-p">
+                    CAMPANHAS
+                </button>
+            </div>
+        </div>
+
+        <div class="card-tipo-p">
+            <div class="card-nome-parceiro">
+                <label class="nome-parceiro">PARCEIRO 3</label>
+            </div>
+            <div>
+                <img class="card-imagem-parceiro" src="../assets/img/parceiro3.png"> 
+            </div>
+            <div class="card-btn-doacao">
+                <button class="botao-p">
+                    CAMPANHAS
+                </button>
+            </div>
+        </div>
+
+
+        <div class="espaco-seta">
+            <a href="../html/parceiros.html"><img class="seta" src="../assets/img/image 13.png" ></a>
+        </div>
+
+    </div>
+
+     
+     
+
+        
+    </div>
+
+
+<script src="../js/homepage.js"></script>
+</body>
+
+<footer>
+    <div class="rodape-info">
+        <p class="rodape-conteudo">Lorem ipsum  nobis ex. Deserunt dignissimos temporibus repudiandae aut soluta ad esse quibusdam nisi labore vel fugit sequi neque incidunt id expedita architecto odit, qui mollitia saepe necessitatibus?</p>
+        <p class="rodape-conteudo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, iure?</p>
+        <p class="rodape-conteudo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id illum voluptatum minus dolor aliquid sexo labore vel fugit.</p>
+    </div>
+</footer>
+
+</html>
