@@ -2,6 +2,8 @@ const QRCode  = require('qrcode');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const { Payment, MercadoPagoConfig } = require('mercadopago');
+const client = new MercadoPagoConfig({ accessToken: 'TEST-108244454170220-111320-4bf0bcfe1c100df823c3ec69218a97c2-731218308' });
 const pool = require('./db/database');
 
 const app = express();
@@ -31,7 +33,12 @@ app.post("/login", async function (req, res) {
       mensagem: err,
     });
   }
-
+if(con.rows[0] == null) {
+  return res.json({
+    tipo: "Erro",
+    mensagem: "Usuário não encontrado",
+  });
+}
   return res.json({
     tipo: "Login realizado com sucesso",
     mensagem: `Bem vindo de volta, ${con.rows[0].nome}`,
@@ -40,6 +47,7 @@ app.post("/login", async function (req, res) {
       nome: con.rows[0].nome,
       temPermissao: con.rows[0].permissao,
       email: con.rows[0].email,
+      imagemperfil: con.rows[0].imagemperfil
     },
   });
 
@@ -87,6 +95,13 @@ app.post("/dadosDoacao", async function (req, res) {
       mensagem: con.err
     })
   }
+  if (con.rows[0] == null) {
+    return res.json({
+      tipo: "Erro",
+      mensagem: "Não foi possível realizar a criação"
+    })
+  }
+
 
   for (let i = 0; i < con.rows.length; i++) {
     listaCampanhas.push({
@@ -128,7 +143,7 @@ app.post("/criarParceiro", async function (req, res) {
 
   const text = `INSERT INTO parceiro(imagem_perfil, nome, objetivo, CNPJ, endereco, telefone, email, instagram, facebook, site, nosso_trabalho) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`
   values = [req.body.img, req.body.nome, req.body.objetivo, req.body.cnpj, req.body.endereco, req.body.telefone, email, instagram, facebook, site, nossoTrabalho]
-  
+
 
   const con = await pool.query(text, values)
   if (con.err) {
@@ -191,7 +206,7 @@ app.post("/DeletarParceiro", async function (req, res) {
 
   return res.json({
     tipo: "Sucesso",
-    mensagem: "Parceiro Alterado",
+    mensagem: "Parceiro Deletado",
   });
 })
 
@@ -201,7 +216,7 @@ app.post("/cadastro", async function (req, res) {
   console.log("passou aqui")
   let usuario = [];
   const text = `INSERT INTO usuario(nome, senha, email, permissao, imagemperfil) VALUES ($1, $2, $3, $4, $5) RETURNING *`
-  const values = [req.body.nome, req.body.senha, req.body.email, 0, null]
+  const values = [req.body.nome, req.body.senha, req.body.email, 0, req.body.imagemperfil]
   const con = await pool.query(text, values)
 
   if (con.err) {
@@ -309,9 +324,19 @@ app.post("/criarCampanha", async function (req, res) {
       mensagem: con.err
     })
   }
-
+  const idC = con.rows[0].id
   text = `INSERT INTO parceiro_has_campanha(parceiro_id, campanha_id) VALUES ($1, $2)`
-  values = [req.body.parceiro, con.rows[0].id]
+  values = [req.body.parceiro, idC]
+  con = await pool.query(text, values)
+  if (con.err) {
+    return res.json({
+      tipo: "Erro",
+      mensagem: con.err
+    })
+  }
+
+  text = `INSERT INTO imagem(imagem, campanha_id, principal) VALUES ($1, $2, 0) RETURNING *`
+  values = [req.body.img, idC]
   con = await pool.query(text, values)
   if (con.err) {
     return res.json({
@@ -325,6 +350,8 @@ app.post("/criarCampanha", async function (req, res) {
     mensagem: "Campanha criada com sucesso",
     s: "Funcionamento total"
   });
+
+
 })
 
 
@@ -469,7 +496,7 @@ app.post("/deletarImagemCampanha", async function (req, res) {
   }
 
   const text2 = `SELECT * FROM imagem WHERE campanha_id = $1 AND principal = 1;`
-  
+
   const values2 = [req.body.id_campanha]
 
   const con2 = await pool.query(text2, values2)
@@ -481,10 +508,10 @@ app.post("/deletarImagemCampanha", async function (req, res) {
     })
   }
 
-  if(con2.rowCount == 0) {
+  if (con2.rowCount == 0) {
     const text3 = `UPDATE imagem SET principal = 1
     WHERE id = (SELECT id FROM imagem WHERE campanha_id = $1 LIMIT 1);`
-    
+
     const values3 = [req.body.id_campanha]
 
     const con3 = await pool.query(text3, values3)
@@ -520,7 +547,7 @@ app.post("/alterarImagemPrincipal", async function (req, res) {
 
   const text2 = `UPDATE imagem SET principal = 1
   WHERE id = $1;`
-  
+
   const values2 = [req.body.id]
 
   const con2 = await pool.query(text2, values2)
@@ -551,19 +578,19 @@ app.post("/dadosRelatorio", async function (req, res) {
   const values = [req.body.id]
   const con = await pool.query(text, values)
 
-  if(con.err) {
+  if (con.err) {
     return res.json({
       tipo: "Erro",
       mensagem: con.err,
     });
   }
 
-  if(con.rows[0] == null){
+  if (con.rows[0] == null) {
     x.push("Não há doações")
     y.push(0)
     cores.push("black")
   }
-  
+
   for (let i = 0; i < con.rows.length; i++) {
     x.push(con.rows[i].campanha)
     y.push(con.rows[i].valor)
@@ -611,12 +638,12 @@ app.post("/fazerPix", function (req, res) {
 
   QRCode.toDataURL(text, function (err, url) {
     if (err) throw err
-    res.json({qrCodeImage: url});
+    res.json({ qrCodeImage: url });
   })
 })
 
 app.post("/ReadCampanha", async function (req, res) {
-  var dados=[];
+  var dados = [];
   const text = `  
   SELECT campanha.nome AS campanha_nome,
          campanha.objetivo AS objetivo,
@@ -627,7 +654,8 @@ app.post("/ReadCampanha", async function (req, res) {
          parceiro.id AS parceiro_id, 
          parceiro.nome as parceiro_nome,
          parceiro.objetivo as objetivo_parceiro,
-         parceiro.site as site
+         parceiro.site as site,
+         parceiro.nosso_trabalho as trabalho
   FROM campanha
   LEFT JOIN imagem ON campanha.id = imagem.campanha_id
   INNER JOIN parceiro_has_campanha ON campanha.id = parceiro_has_campanha.campanha_id
@@ -637,40 +665,42 @@ app.post("/ReadCampanha", async function (req, res) {
 
   const values = [req.body.id];
   const con = await pool.query(text, values);
+  
 
-    if (con.rows[0] == null) {
-      return res.json({
-        tipo: "Erro",
-        mensagem: "Não foi possível retornar os dados"
+  if (con.rows[0] == null) {
+    return res.json({
+      tipo: "Erro",
+      mensagem: "Não foi possível retornar os dados"
+    });
+  }
+  if (con.err) {
+    return res.json({
+      tipo: "Erro",
+      mensagem: err.message
+    });
+  } else {
+    for (let i = 0; i < con.rows.length; i++) {
+      dados.push({
+        campanha_nome: con.rows[i].campanha_nome,
+        objetivo: con.rows[i].objetivo,
+        finalidade: con.rows[i].finalidade,
+        meta: con.rows[i].meta,
+        site_campanha: con.rows[i].site_campanha,
+        valores_imagem: con.rows[i].valores_imagem,
+        parceiro_nome: con.rows[i].parceiro_nome,
+        objetivo_parceiro: con.rows[i].objetivo_parceiro,
+        site: con.rows[i].site,
+        trabalho: con.rows[i].trabalho,
       });
     }
-    if (con.err) {
-      return res.json({
-        tipo: "Erro",
-        mensagem: err.message
-      });
-    }else{
-      for (let i = 0; i < con.rows.length; i++) {
-        dados.push({ 
-          campanha_nome: con.rows[i].campanha_nome,
-          objetivo: con.rows[i].objetivo,
-          finalidade: con.rows[i].finalidade,
-          meta: con.rows[i].meta,
-          site_campanha: con.rows[i].site_campanha,
-          valores_imagem: con.rows[i].valores_imagem,
-          parceiro_nome: con.rows[i].parceiro_nome,
-          objetivo_parceiro: con.rows[i].objetivo_parceiro,
-          site: con.rows[i].site,
-        });
-      }
-    }
-    return res.json({dados});
+  }
+  return res.json({ dados });
 })
 
 app.post("/ReadComentario", async function (req, res) {
-  var dados=[];
+  var dados = [];
   const text = `
-  SELECT comentario.*, usuario.nome AS nome_usuario
+  SELECT comentario.*, usuario.nome AS nome_usuario, usuario.imagemperfil AS imagem
   FROM comentario
   LEFT JOIN usuario ON comentario.usuario_id = usuario.id
   WHERE comentario.campanha_id = $1;
@@ -679,28 +709,30 @@ app.post("/ReadComentario", async function (req, res) {
   const values = [req.body.id];
   const con = await pool.query(text, values);
 
-    if (con.rows[0] == null) {
-      return res.json({
-        tipo: "Erro",
-        mensagem: "Não foi possível retornar os dados"
+  if (con.rows[0] == null) {
+    return res.json({
+      tipo: "Erro",
+      mensagem: "Não foi possível retornar os dados"
+    });
+  }
+  if (con.err) {
+    return res.json({
+      tipo: "Erro",
+      mensagem: err.message
+    });
+  } else {
+    for (let i = 0; i < con.rows.length; i++) {
+      
+      dados.push({
+        idcomentario: con.rows[i].idcomentario,
+        texto: con.rows[i].texto,
+        data: con.rows[i].data,
+        nome_usuario: con.rows[i].nome_usuario,
+        imagem: con.rows[i].imagem
       });
     }
-    if (con.err) {
-      return res.json({
-        tipo: "Erro",
-        mensagem: err.message
-      });
-    }else{
-      for (let i = 0; i < con.rows.length; i++) {
-        dados.push({ 
-          idcomentario: con.rows[i].idcomentario,
-          texto: con.rows[i].texto,
-          data: con.rows[i].data,
-          nome_usuario: con.rows[i].nome_usuario,
-        });
-      }
-    }
-    return res.json({dados});
+  }
+  return res.json({ dados });
 })
 
 app.post("/AddComentario", async function (req, res) {
@@ -712,14 +744,38 @@ app.post("/AddComentario", async function (req, res) {
   const values = [req.body.comentario, req.body.userId, req.body.id];
   const con = await pool.query(text, values);
 
-    if (con.err) {
-      return res.json({
-        tipo: "Erro",
-        mensagem: err.message
-      });}
-
+  if (con.err) {
     return res.json({
-      tipo: "Sucesso",
-      mensagem: "Comentário adicionado!"
-      });
+      tipo: "Erro",
+      mensagem: err.message
+    });
+  }
+
+  return res.json({
+    tipo: "Sucesso",
+    mensagem: "Comentário adicionado!"
+  });
+})
+
+
+
+
+app.post("/criarPagamento", function (req, res) {
+  const payment = new Payment(client);
+
+  payment.create({ body: {
+    transaction_amount: Number(req.body.valor),
+    description: 'Docação',
+    payment_method_id: 'pix',
+    payer: {
+      email: req.body.email
+    },
+  } }).then(function (resposta) {
+
+      console.log(resposta);
+      return res.json(resposta.point_of_interaction.transaction_data.qr_code);
+    
+    }, function (resposta) {
+      return 0;
+    });
 })
