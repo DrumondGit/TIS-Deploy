@@ -47,7 +47,7 @@ function login() {
       return window.alert("Preencha todos o dados")
   }
 
-  fetch("http://localhost:3000/login", {
+  fetch("https://encorajarte.onrender.com/login", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
@@ -78,7 +78,7 @@ async function cadastrar(event) {
       window.alert("Tenha certeza de preencher todos os campos")
   } else {
 
-      const url = `http://localhost:3000/cadastro`
+      const url = `https://encorajarte.onrender.com/cadastro`
 
       var resp = await fetch(url, {
           method: "POST",

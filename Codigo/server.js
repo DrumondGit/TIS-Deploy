@@ -2,17 +2,7 @@ const QRCode  = require('qrcode');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-//const pool = require('./db/database');
-
-const { Pool, Client, defaults } = require('pg')
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: '12345',
-  port: 5432,
-})
+const pool = require('./db/database');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,7 +10,9 @@ const PORT = process.env.PORT || 3000;
 // Configurações do servidor
 app.use(express.static(path.join(__dirname, 'public'))); // Configura o servidor para servir arquivos estáticos
 app.use(express.json()); // Habilita o parsing de JSON nas requisições
-app.use(cors()); // Habilita o middleware de CORS para permitir requisições de diferentes origens
+app.use(cors({
+  origin: 'https://encorajarte.onrender.com'
+})); // Habilita o middleware de CORS para permitir requisições de diferentes origens
 
 // Inicia o servidor na porta definida
 app.listen(PORT, () => {
