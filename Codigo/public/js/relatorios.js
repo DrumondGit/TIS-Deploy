@@ -1,5 +1,5 @@
 function listarParceiros() {
-    fetch("http://localhost:3000/listarParceiro", {
+    fetch("https://encorajarte.onrender.com/listarParceiro", {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then(function (res) {
@@ -23,7 +23,7 @@ function listarParceiros() {
 function visualizarGrafico(id) {
     document.getElementById("containGrafico").innerHTML = (`
     <canvas id="grafico"></canvas>`)
-    fetch("http://localhost:3000/dadosRelatorio", {
+    fetch("https://encorajarte.onrender.com/dadosRelatorio", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -38,7 +38,7 @@ function alterarImagemPrincipal() {
             }
         }
     }
-    fetch("http://localhost:3000/alterarImagemPrincipal", {
+    fetch("https://encorajarte.onrender.com/alterarImagemPrincipal", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -68,7 +68,7 @@ function deletarImagemCampanha() {
             }
         }
     }
-    fetch("http://localhost:3000/deletarImagemCampanha", {
+    fetch("https://encorajarte.onrender.com/deletarImagemCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

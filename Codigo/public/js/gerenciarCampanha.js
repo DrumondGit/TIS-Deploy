@@ -3,7 +3,7 @@ function listarParceiro() {
     const c = document.getElementById("parceiro");
     c.innerHTML = "";
     console.log("asd")
-    fetch("http://localhost:3000/listarParceiro", {
+    fetch("https://encorajarte.onrender.com/listarParceiro", {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     }).then(function (res) {
@@ -25,7 +25,7 @@ function criarCampanha() {
     const site_campanha = document.getElementById("site_campanha").value
     const meta = document.getElementById("meta").value
     const parceiro = document.getElementById("parceiro").value
-    fetch("http://localhost:3000/criarCampanha", {
+    fetch("https://encorajarte.onrender.com/criarCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -49,7 +49,7 @@ function alterarCampanha() {
     const finalidade = document.getElementById("finalidade").value
     const site = document.getElementById("site").value
     const meta = document.getElementById("meta").value
-    fetch("http://localhost:3000/alterarCampanha", {
+    fetch("https://encorajarte.onrender.com/alterarCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -68,7 +68,7 @@ function alterarCampanha() {
 
 async function viewCampanha() {
     const id = sessionStorage.getItem("campanha_id")
-    const res = await fetch("http://localhost:3000/viewCampanha", {
+    const res = await fetch("https://encorajarte.onrender.com/viewCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -94,7 +94,7 @@ async function viewCampanha() {
 }
 
 function excluirCampanha(id) {
-    fetch("http://localhost:3000/excluirCampanha", {
+    fetch("https://encorajarte.onrender.com/excluirCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -113,7 +113,7 @@ function excluirCampanha(id) {
 }
 
 async function imagensDaCampanha(id) {
-    const res = await fetch("http://localhost:3000/viewImagensCampanha", {
+    const res = await fetch("https://encorajarte.onrender.com/viewImagensCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -160,7 +160,7 @@ function inputImagem() {
 function addImagem(id) {
     const img = document.getElementById("novaImagem").value
     if(img != ""){
-        fetch("http://localhost:3000/addImagem", {
+        fetch("https://encorajarte.onrender.com/addImagem", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -194,7 +194,7 @@ function pesquisarCampanha() {
 
 function fazerPix() {
 
-    fetch("http://localhost:3000/fazerPix", {
+    fetch("https://encorajarte.onrender.com/fazerPix", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -212,7 +212,7 @@ function fazerPix() {
 
 function puxarCampanha() {
     const id = Number(sessionStorage.getItem("id"))
-    fetch("http://localhost:3000/ReadCampanha", {
+    fetch("https://encorajarte.onrender.com/ReadCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -229,7 +229,7 @@ function puxarCampanha() {
         });
     })
 
-    fetch("http://localhost:3000/ReadComentario", {
+    fetch("https://encorajarte.onrender.com/ReadComentario", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -257,7 +257,7 @@ function comentar(){
        window.alert("Comentario invalido")
        window.reload;
     }else{
-        fetch("http://localhost:3000/AddComentario", {
+        fetch("https://encorajarte.onrender.com/AddComentario", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

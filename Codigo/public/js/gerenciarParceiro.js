@@ -10,7 +10,7 @@ function criarParceiro() {
     const facebook = document.getElementById("facebook").value
     const site = document.getElementById("site").value
     const nossoTrabalho = document.getElementById("nossoTrabalho").value
-    fetch("http://localhost:3000/criarParceiro", {
+    fetch("https://encorajarte.onrender.com/criarParceiro", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -29,7 +29,7 @@ function criarParceiro() {
 
 function carregarDados(){
     let id=sessionStorage.getItem('id');
-    fetch("http://localhost:3000/acharParceiro", {
+    fetch("https://encorajarte.onrender.com/acharParceiro", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -112,7 +112,7 @@ function alterarMudancas(){
         trabalho=parceiro.nossoTrabalho
     }
 
-    fetch("http://localhost:3000/alterarParceiro", {
+    fetch("https://encorajarte.onrender.com/alterarParceiro", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -141,7 +141,7 @@ function alterarInput(){
 
 function deletarParceiro(id){
     
-    fetch("http://localhost:3000/DeletarParceiro", {
+    fetch("https://encorajarte.onrender.com/DeletarParceiro", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

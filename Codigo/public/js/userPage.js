@@ -9,7 +9,7 @@ function carregaDados() {
     <p>Nome: ${usuario.nome}</p>
     <p>Email: ${usuario.email}</p>`
 
-    fetch("http://localhost:3000/dadosDoacao", {
+    fetch("https://encorajarte.onrender.com/dadosDoacao", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: usuario.id })
@@ -50,7 +50,7 @@ function alterarDados() {
         return window.alert("Preencha todos o dados")
     }
 
-    fetch("http://localhost:3000/alterarDados", {
+    fetch("https://encorajarte.onrender.com/alterarDados", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nome: nome, senha: senha, id: usuario.id })

@@ -1,7 +1,7 @@
 async function getParceiros() {
     let dados;
     try {
-        const response = await fetch('http://localhost:3000/listarParceiro');
+        const response = await fetch('https://encorajarte.onrender.com/listarParceiro');
         dados = await response.json();
         console.log(dados);
     } catch (error) {

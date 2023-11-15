@@ -1,7 +1,7 @@
 async function getCampanhas() {
     let dados;
     try {
-        const response = await fetch('http://localhost:3000/listarCampanha');
+        const response = await fetch('https://encorajarte.onrender.com/listarCampanha');
         dados = await response.json();
         console.log(dados);
     } catch (error) {
