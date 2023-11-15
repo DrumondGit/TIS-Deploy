@@ -25,11 +25,12 @@ function criarCampanha() {
     const site_campanha = document.getElementById("site_campanha").value
     const meta = document.getElementById("meta").value
     const parceiro = document.getElementById("parceiro").value
+    const img = document.getElementById("imagem").value
     fetch("https://encorajarte.onrender.com/criarCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            nome, objetivo, finalidade, site_campanha, meta, parceiro
+            nome, objetivo, finalidade, site_campanha, meta, parceiro, img
         })
     }).then(function (res) {
         res.json().then(function (data) {
@@ -130,7 +131,7 @@ async function imagensDaCampanha(id) {
         for (let i = 0; i < data.imagens.length; i++) {
             document.getElementsByClassName("carousel-indicators")[0].innerHTML += (`<li class="indicador" data-target="#carouselExampleIndicators" data-slide-to="${i}"></li>`)
             let imagem = data.imagens[i].imagem
-            if(imagem == '') {
+            if (imagem == '') {
                 imagem = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCPR7FIkoelsiKYUFNcqCJEXCYlh52YzwjPhDsBW1Plw&s'
             }
             document.getElementsByClassName("carousel-inner")[0].innerHTML += (`<div id="${data.imagens[i].id}" class="carousel-item">
@@ -146,7 +147,7 @@ async function imagensDaCampanha(id) {
         <button class="btn btn-outline-info col-2 m-0" type="button" onclick="addImagem(${id})">+</button>
         </div>`)
 
-        if(document.getElementsByClassName("indicador").length != 0) {
+        if (document.getElementsByClassName("indicador").length != 0) {
             document.getElementsByClassName("indicador")[0].classList.add("active")
             document.getElementsByClassName("carousel-item")[0].classList.add("active")
         }
@@ -159,7 +160,7 @@ function inputImagem() {
 
 function addImagem(id) {
     const img = document.getElementById("novaImagem").value
-    if(img != ""){
+    if (img != "") {
         fetch("https://encorajarte.onrender.com/addImagem", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -168,7 +169,7 @@ function addImagem(id) {
             })
         }).then(function (res) {
             res.json().then(function (data) {
-                if(data.s) {
+                if (data.s) {
                     sessionStorage.setItem("campanha_id", id)
                     window.location.reload()
                 }
@@ -207,11 +208,12 @@ function fazerPix() {
             document.getElementById("fazerPix").src = data.qrCodeImage;
         });
     })
-    
+
 }
 
 function puxarCampanha() {
     const id = Number(sessionStorage.getItem("id"))
+
     fetch("https://encorajarte.onrender.com/ReadCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -220,11 +222,67 @@ function puxarCampanha() {
         })
     }).then(function (res) {
         res.json().then(function (data) {
+
             if (data.dados) {
-                console.log(`${data.dados[1].objetivo}`)
+                console.log(`${data.dados[0].objetivo}`)
             } else {
                 window.alert(`${data.tipo} - ${data.mensagem}`)
             }
+            console.log(data.dados)
+            console.log(data.dados[0].objetivo)
+
+            // document.getElementById("id_imagens").innerHTML += (`<img src="https://s2-techtudo.glbimg.com/SSAPhiaAy_zLTOu3Tr3ZKu2H5vg=/0x0:1024x609/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg" alt="Prévia da imagemasd..." id="foto" name="">`)
+
+
+            const imagens = document.getElementById("id_imagens");
+
+            // imagens.innerHTML += (`
+
+            // <div class="carousel-item">
+            //             <img class="d-block w-100" src=" https://s2-techtudo.glbimg.com/SSAPhiaAy_zLTOu3Tr3ZKu2H5vg=/0x0:1024x609/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg" alt="Second slide">
+            //         </div>
+
+
+            // `) 
+
+            console.log(data.dados[0].valores_imagem)
+            if(data.dados[0].valores_imagem==null){
+                imagens.innerHTML += (`
+                <div class="carousel-item active">
+                <img src="https://blog.nscsports.org/wp-content/uploads/2014/10/default-img.gif" alt="Prévia da imagem..." id="foto${0}" name="">
+                </div>
+                `)
+            }else{
+                imagens.innerHTML += (`
+                <div class="carousel-item active">
+                <img src="${data.dados[0].valores_imagem}" alt="Prévia da imagem..." id="foto${0}" name="">
+                </div>
+                `)
+
+            if (data.dados.length > 1) {
+                for (let i = 1; i < data.dados.length; i++) {
+                    imagens.innerHTML += (`
+                <div class="carousel-item">
+                <img src="${data.dados[i].valores_imagem}" alt="Prévia da imagemas..." id="foto${i}" name="">
+                </div>
+                `)
+                }
+            } }
+
+
+
+
+
+            document.getElementById("titulo_campanha").innerHTML += (`${data.dados[0].campanha_nome}`)
+            document.getElementById("objetivo_campanha").innerHTML += (`${data.dados[0].objetivo}`)
+            document.getElementById("nosso_trabalho_campanha").innerHTML += (`${data.dados[0].finalidade}`)
+            document.getElementById("fundos_campanha").innerHTML += (`${data.dados[0].objetivo}`)
+            document.getElementById("objetivo_parceiro").innerHTML += (`${data.dados[0].objetivo_parceiro}`)
+            document.getElementById("sobre_nos_parceiro").innerHTML += (`${data.dados[0].objetivo}`)
+            document.getElementById("site_parceiro").innerHTML += (`${data.dados[0].site}`)
+            document.getElementById("titulo_parceiro").innerHTML += (`${data.dados[0].parceiro_nome}`)
+
+
 
         });
     })
@@ -237,10 +295,37 @@ function puxarCampanha() {
         })
     }).then(function (res) {
         res.json().then(function (data) {
+            const campo=document.getElementById("comentarios")
             if (data.dados) {
-                console.log(`${data.dados[0].texto}`)
+                campo.innerHTML =''
+                for(let i = 0; i<data.dados.length; i++) {
+                    campo.innerHTML += (`
+                <div class="caixa_comentario">
+                    <p class="nome_usuario"><b>${data.dados[i].nome_usuario}</b></p>
+                    <div class="img_cmt">
+                        <img class="img_perfil" src="${data.dados[i].imagem}">
+                        <p class="comentario">${data.dados[i].texto}</p>
+                    </div>
+                </div>
+
+                    `)
+                }
+                campo.innerHTML += `                <div id="comentar">
+                <textarea type="text" id="comentario"></textarea>
+                <button onclick="comentar()">Enviar</button>
+            </div>
+                `
             } else {
-                window.alert(`${data.tipo} - ${data.mensagem}`)
+                campo.innerHTML +=`
+                <div id="">
+                <h2>Seja o primeiro a comentar!</h2>
+                
+            </div>
+                <div id="comentar">
+                <textarea type="text" id="comentario"></textarea>
+                <button onclick="comentar()">Enviar</button>
+            </div>
+                `
             }
 
         });
@@ -248,20 +333,21 @@ function puxarCampanha() {
 
 }
 
-function comentar(){
+function comentar() {
     const id = Number(sessionStorage.getItem("id"))
     const user = JSON.parse(sessionStorage.getItem('usuario'));
-    const comentario= ""//= document.getElementById("comentario").value
+    const comentario=document.getElementById("comentario").value
 
-    if(comentario==''){
-       window.alert("Comentario invalido")
-       window.reload;
-    }else{
+
+    if (comentario == '') {
+        window.alert("Comentario invalido")
+        window.reload;
+    } else {
         fetch("https://encorajarte.onrender.com/AddComentario", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-             comentario,userId:user.id, id
+                comentario, userId: user.id, id
             })
         }).then(function (res) {
             res.json().then(function (data) {

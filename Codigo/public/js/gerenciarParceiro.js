@@ -37,13 +37,21 @@ function carregarDados(){
         })
     }).then(function (res) {
         res.json().then(function (data) {
-            console.log(JSON.stringify(`${data.parceiro.nome}`))
+            console.log(JSON.stringify(`${data.parceiro.objetivo}`))
+            document.getElementById("nome").innerHTML = data.parceiro.nome + '<i class="bi bi-pencil-square ml-1" contenteditable="false" aria-readonly="true"></i>'
+            document.getElementById("objetivo").value = data.parceiro.objetivo
+            document.getElementById("trabalho").value = data.parceiro.nossoTrabalho
+            document.getElementById("site").value = data.parceiro.site
+            document.getElementById("instagram").value = data.parceiro.instagram
+            document.getElementById("facebook").value = data.parceiro.facebook
+            document.getElementById("cnpj").value = data.parceiro.cnpj
+            document.getElementById("endereco").value = data.parceiro.endereco
+            document.getElementById("telefone").value = data.parceiro.telefone
+            document.getElementById("email").value = data.parceiro.email
+            document.getElementById("imgPreview").innerHTML += (`<img src="${data.parceiro.imagemperfil}" alt="Prévia da imagemasd..." id="foto" name="">`)
 
-            const nome= document.getElementById("nome")
-            nome.innerHTML =`
-            <h1 class="nomeParceiro" id="nome">${data.parceiro.nome}</h1>
-            
-            `
+
+
             sessionStorage.setItem('parceiro',JSON.stringify(data.parceiro))
         });
     })
@@ -52,17 +60,23 @@ function carregarDados(){
 
 }
 
+function previewFile(){
+    let img = document.getElementById("urlImg").value
+    console.log(img)
+    document.getElementById("imgPreview").innerHTML = (`<img src="${img}" alt="Prévia da imagem..." id="foto" name="">`)
+}
+
 function alterarMudancas(){
     const parceiro = JSON.parse(sessionStorage.getItem('parceiro'));
     console.log(parceiro)
     let id=parceiro.id
 
-    let img = ""
+    let img = document.getElementById("urlImg").value
     if(img ==""){
-        //img=parceiro.imagemperfil
+        img=parceiro.imagemperfil
     }
 
-    let nome=document.getElementById("nomeAlter").value
+    const nome = document.getElementById("nome").innerText
     if(nome==""){
         nome=parceiro.nome
     }
@@ -149,8 +163,24 @@ function deletarParceiro(id){
         })
     }).then(function (res) {
         res.json().then(function (data) {
-            window.location.assign("../public/parceiros.html")
+            window.location.assign("../html/parceiros.html")
         });
     })
+
+}
+
+
+function pesquisarParceiro() {
+    const pesquisa = document.getElementById("pesquisa").value
+
+
+    let elementos = document.querySelectorAll('.card_parceiro');
+    for (let i = 0; i < elementos.length; i++) {
+        if (!elementos[i].textContent.toLowerCase().includes(pesquisa.toLowerCase())) {
+            elementos[i].classList.add('oculto');
+        } else {
+            elementos[i].classList.remove('oculto');
+        }
+    }
 
 }

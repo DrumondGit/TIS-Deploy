@@ -1,12 +1,18 @@
+h2 {
+    margin: 0;
+    width: fit-content;
+    padding: 10px;
+}
 
-.Title{
+#titulo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .form-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-direction: row;  
     margin:1% 5%;
 }
@@ -45,7 +51,7 @@
     border-radius: 8px;
     border: 0.5px solid #999999;
     background-color: #F0F0F0;
-    width: 500px;
+    width: 100%;
     padding: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
     
@@ -55,19 +61,22 @@
     border-radius: 8px;
     border: 0.5px solid #999999;
     background-color: #F0F0F0;
-    width: 300px;
+    width: 100%;
     padding: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
     
 }
-#nomeAlter{
+
+.Imagem > input{
     border-radius: 8px;
     border: 0.5px solid #999999;
     background-color: #F0F0F0;
-    width: 300px;
+    width: 100%;
     padding: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    
 }
+
 .Objetivo{
     border: none;
     border-radius: 20px;
@@ -83,13 +92,19 @@ textarea{
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
     font-size: 16px;
     resize: none;
+    width: 100%;
 }
 
-.imgPreview{
-    border: 0.5px solid #999999;
-    border-radius: 20px;
-    background-color: #F0F0F0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+
+
+.imgPreview {
+    width: 300px; /* Largura desejada */
+}
+
+.imgPreview img {
+    width: 100%; /* Faz com que a imagem ocupe 100% da largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaço extra abaixo da imagem */
 }
 
 .Dados > button{
@@ -113,22 +128,26 @@ textarea{
     padding: 20px;
 }
 
-.Title > button:hover{
-    width: 200px;
-    background-color: #b45959;
+
+
+#foto{
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    border: 0.5px solid #999999;
-    padding: 20px;
-    font-size: 20px;
+    border-radius: 10px;
 }
 
-.Title > button{
-    width: 200px;
-    background-color: #F0F0F0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    border: 0.5px solid #999999;
-    padding: 20px;
-    font-size: 20px;
+/* Estilos padrão para telas maiores que 768 pixels */
+
+/* Media query para telas menores ou iguais a 768 pixels */
+@media only screen and (max-width: 1535px) {
+    .form-container {
+        display: flex;
+        flex-direction: column;  
+        margin:1% 5%;
+        align-items: center;
+    }
+    .form-section{
+        margin-bottom:50px;
+    }
+
 }
+

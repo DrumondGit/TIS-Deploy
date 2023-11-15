@@ -8,30 +8,64 @@
     <link rel="stylesheet" href="../css/global.css">
     <title>Criação de Campanhas</title>
     <script src="../js/gerenciarCampanha.js" defer></script>
+    <script src="../js/homepage.js" defer></script>
+    <script src="../script.js" defer></script>
 </head>
 
-
-
 <body onload="listarParceiro()">
-    <header>
-        <div class="cabecalho">
-            <div class="cabecalho_e">
-                <a href="../index.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
-            </div>
-            <div class="cabecalho_d">
-
-                <div class="cabecalho_btns">
-                    <nav>
-                        <a class="btnTipo1">CONTATE-NOS</a>
-                        <a class="btnTipo1">SOBRE NÓS</a>
-                        <a class="btnTipo2" id="loginBtn">LOGIN</a>
-                        <a class="btnTipo2">DOE AGORA</a>
-                    </nav>
+    <body>
+        <header>
+            <div class="cabecalho">
+                <div class="cabecalho_e">
+                    <a href="../html/homepage.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
                 </div>
+                <div class="cabecalho_d">
+        
+                    <div class="cabecalho_btns">
+                        <nav>
+                            <a href="homepage.html#contatenos" class="btnTipo1">CONTATE-NOS</a>
+                            <a href="homepage.html#sobre_nos" class="btnTipo1">SOBRE NÓS</a>
+                            <a class="btnTipo1" id="perfilBtn" href="../html/userPage.html">PERFIL</a>
+                            <a class="btnTipo2" id="loginBtn">LOGIN</a>
+                            <a href="../html/campanhas.html" class="btnTipo2">DOE AGORA</a>
+                        </nav>
+                        <div class="dropdown">
+                            <button class="btn btn_dropdown btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-list-ul" style="color: #ffffff;"></i> </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="homepage.html#contatenos" class="btnTipo_bb">CONTATE-NOS</a><br>
+                                <a href="homepage.html#sobre_nos" class="btnTipo_bb">SOBRE NÓS</a><br>
+                                <a class="btnTipo_bb" id="perfilBtn" href="../html/userPage.html">PERFIL</a><br>
+                                <a class="btnTipo_bb" id="loginBtn">LOGIN</a><br>
+                                <a href="../html/campanhas.html" class="btnTipo_bb">DOE AGORA</a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
             </div>
+        
+        
+        </header>
 
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" id="closeBtn">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="emailModal" name="email" required>
+    
+                <label for="password">Senha:</label>
+                <input type="password" id="passwordModal" name="password" required>
+    
+                <button onclick="login()" type="button">Entrar</button>
+            </form>
+            <p>Não tem uma conta? <a href="../html/cadastro.html">Cadastre-se</a></p>
         </div>
-    </header>
+    </div>
+    
     <h1>Criação de Campanhas</h1>
     <form class="formulario" action="processar_campanha.php" method="post" enctype="multipart/form-data">
         <div class="formulario-esquerda">
@@ -59,14 +93,12 @@
                 <option value="parceiro2">Parceiro 2</option>
                 <option value="parceiro3">Parceiro 3</option>
             </select>
-            <label for="imagem">Adicionar Imagem:</label>
-            <input type="file" id="imagem" name="imagens" accept="image/*" onchange="adicionarImagem(this)">
+            <label for="imagem">Adicionar Imagem (url):</label>
+            <input type="text" id="imagem" name="imagens" accept="image/*" onchange="adicionarImagem(this)">
 
             <ul id="lista-imagens">
                 <!-- Aqui as imagens selecionadas serão exibidas com os nomes e a opção de exclusão -->
             </ul>
-            <label for="foto_perfil">Alterar foto de perfil:</label>
-            <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" required>
         </div>
 
         <div style="clear:both;"></div>

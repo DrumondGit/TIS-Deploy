@@ -12,7 +12,8 @@ async function getParceiros() {
 
 async function onload() {
     try {
-        innerHTMLParceiros()
+        await innerHTMLParceiros()
+        displayAdmin()
     } catch (error) {
         console.error('Erro:', error);
     }
@@ -32,9 +33,8 @@ async function innerHTMLParceiros(){
                 <div class="foto_parceiro" style="background-image: url('${dadosParceiros[i].imagemperfil}');">
 
                     <div class="botao_doar">
-                        <button class="botao">Campanhas</button>
-                        <button class="botao" onclick="pegarId(${dadosParceiros[i].id})">Editar</button>
-                        <button class="botao" onclick="deletarParceiro(${dadosParceiros[i].id})">Excluir</button>
+                        <button class="botao botaoEditar" onclick="pegarId(${dadosParceiros[i].id})">Editar</button>
+                        <button class="botao botaoExcluir" onclick="deletarParceiro(${dadosParceiros[i].id})">Excluir</button>
                     </div>
                 </div>
 
@@ -67,4 +67,27 @@ async function innerHTMLParceiros(){
 function pegarId(id){
     sessionStorage.setItem('id',id)
     window.location.assign("partnerPage.html")
+}
+
+async function displayAdmin(){
+    var dados = JSON.parse(sessionStorage.getItem('usuario'))
+    var botao = document.querySelector('.botao')
+    var editar = document.querySelectorAll('.botaoEditar')
+    var excluir = document.querySelectorAll('.botaoExcluir')
+
+    if(dados != null){
+        if(dados.temPermissao == 1){
+            botao.style.display = 'block'
+            editar.forEach(editor => editor.style.display = 'block');
+            excluir.forEach(excluidor => excluidor.style.display = 'block');
+        } else if(dados.temPermissao == 0) {
+            botao.style.display = 'none'
+            editar.forEach(editor => editor.style.display = 'none');
+            excluir.forEach(excluidor => excluidor.style.display = 'none');
+        } 
+    }else {
+        botao.style.display = 'none'
+        editar.forEach(editor => editor.style.display = 'none');
+        excluir.forEach(excluidor => excluidor.style.display = 'none');
+    }
 }

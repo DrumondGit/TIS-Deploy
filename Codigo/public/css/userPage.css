@@ -5,13 +5,13 @@
 
 .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content:space-between;
     width: 100%;
     margin: 0;
     align-items: center;
     height: auto;
-    color: #000000;    
+    color: #000000;   
 }
 
 p{
@@ -51,8 +51,14 @@ p{
     background-color: #807f734d; /* Define a cor de fundo */
     padding: 20px; /* Define o espaçamento interno */
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
-
+img{
+    border-radius: 15px;
+    margin: 5px;
+    max-width: 300px;
+}
 .botaoAlterar{
     margin-top: 20px;
     border-radius: 8px;
@@ -110,3 +116,29 @@ input{
   .card p {
     font-size: 16px;
   }
+
+
+  @media only screen and (max-width: 970px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content:space-between;
+        width: 100%;
+        margin: 0;
+        align-items: center;
+        height: auto;
+        color: #000000;   
+    }
+
+    .doacao{
+        border-left: 0px solid #000;    
+        padding: 20px;
+        width: 60%;
+        max-height: 800px;
+        min-height: 800px;
+        overflow-y: auto;
+        margin-top: 0px;
+    }
+    
+}

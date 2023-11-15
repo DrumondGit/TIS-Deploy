@@ -10,13 +10,21 @@
 
 }
 
+.cabecalho a:link {
+    text-decoration: none;
+}
+  
+.cabecalho a:hover {
+    text-decoration: none;
+}
+
 .cabecalho_e { /*<img id="img_cabecalho" src="assets/img/img_cabecalho.png">*/
     height:90px;
 }
 
 .cabecalho_d { /*<img id="img_cabecalho" src="assets/img/img_cabecalho.png">  //  assets/img/encorajarte_logo.jpeg*/
     width: 1000px; height:90px;
-    background-image: url("/Codigo/assets/img/img_cabecalho.png");
+    background-image: url("../assets/img/img_cabecalho.png");
     background-repeat: no-repeat;
 
     background-position: right top;
@@ -104,6 +112,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: normal;
+    padding-top: 0px;
+    width: 100%;
 }
 
 #loginModal label {
@@ -116,13 +127,23 @@
     border-radius: 3px;
 }
 
+#loginModal h2{
+    width: auto;
+}
+
 #loginModal button {
     background-color: #333;
     color: white;
     padding: 5px 10px;
     border: none;
+    margin: 0;
     border-radius: 3px;
     cursor: pointer;
+    position: static;
+    font-weight: bold;
+    background-image: none;
+    transition: none;
+    background-size: auto;
 }
 
 #loginModal button:hover {
@@ -142,3 +163,46 @@
     margin-right: auto;
 }
 /*========================================================================================================================*/
+
+.dropdown {
+    margin-right: 10px;
+    color: #000;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+.btn_dropdown {
+    background-color: #000;
+}
+.btnTipo_bb {
+    font-weight: 400;
+    color: #000;
+}
+.dropdown-menu {
+    padding: 10px;
+}
+
+@media(max-width: 1100px) {
+.btnTipo1 {
+    display: none;
+}
+.btnTipo2 {
+   display: none;
+}
+}
+@media(min-width: 1100px) {
+    .dropdown {
+        display: none;
+    }
+}
+
+/*=0=0=0=0=0=0=0=0=0=0=0=0=0=0=0=0=*/
+.botao_campanhas {
+    display: none;
+}
+/*=0=0=0=0=0=0=0=0=0=0=0=0=0=0=0=0=*/
+
+#semNada {
+    text-decoration: none;
+    background-color: transparent;
+    color: #000;
+}

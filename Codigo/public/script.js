@@ -40,30 +40,30 @@
 
 
 function login() {
-  const usu_email = document.getElementById("email").value
-  const usu_senha = document.getElementById("password").value
-
-  if (usu_email === "" || usu_senha === "") {
-      return window.alert("Preencha todos o dados")
-  }
-
-  fetch("https://encorajarte.onrender.com/login", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        email: usu_email, senha: usu_senha
-       })
-  }).then(function (res) {
-      res.json().then(function (data) {
-          window.alert(`${data.tipo} - ${data.mensagem}`)
-          if (data.usuario) {
-              sessionStorage.setItem('usuario', JSON.stringify(data.usuario))
-              window.location.assign("homepage.html")
-          }
-
-      });
-  })
-}
+    const usu_email = document.getElementById("emailModal").value
+    const usu_senha = document.getElementById("passwordModal").value
+  
+    if (usu_email === "" || usu_senha === "") {
+        return window.alert("Preencha todos o dados")
+    }
+  
+    fetch("https://encorajarte.onrender.com/login", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email: usu_email, senha: usu_senha
+         })
+    }).then(function (res) {
+        res.json().then(function (data) {
+            window.alert(`${data.tipo} - ${data.mensagem}`)
+            if (data.usuario) {
+                sessionStorage.setItem('usuario', JSON.stringify(data.usuario))
+                window.location.assign("homepage.html")
+            }
+  
+        });
+    })
+  }  
 
 async function cadastrar(event) {
   event.preventDefault()
@@ -72,6 +72,7 @@ async function cadastrar(event) {
   const nome = document.getElementById("username").value
   const senha = document.getElementById("password").value
   const email = document.getElementById("email").value
+  const imagemperfil = document.getElementById("profile-picture").value
   
 
   if ((nome.trim() === "") || (email.trim() === "") || (senha.trim() === "")) {
@@ -88,14 +89,15 @@ async function cadastrar(event) {
           body: JSON.stringify({
               nome: nome,
               senha: senha,
-              email: email
+              email: email,
+              imagemperfil: imagemperfil
           }),
       })
 
       
       var data = await resp.json()
       sessionStorage.setItem('usuario', JSON.stringify(data.usuario))
-      window.location.assign("index.html")
+      window.location.assign("../index.html")
 
       console.log(nome)
       console.log(email)

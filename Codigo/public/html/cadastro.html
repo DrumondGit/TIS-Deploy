@@ -16,35 +16,67 @@
     <title>Encorajarte - Cadastrar Usuario</title>
     <script src="../script.js" defer></script>
     <script src="../js/gerenciarCampanha.js" defer></script>
+    <script src="../js/homepage.js" defer></script>
+
+
+
+    
 </head>
 
-<body onload="fazerPix()">
+<body>
     <header>
         <div class="cabecalho">
             <div class="cabecalho_e">
-                <img id="logo" src="../assets/img/encorajarte_logo.jpeg">
+                <a href="../html/homepage.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
             </div>
             <div class="cabecalho_d">
-
+    
                 <div class="cabecalho_btns">
                     <nav>
-                        <a class="btnTipo1">CONTATE-NOS</a>
-                        <a class="btnTipo1">SOBRE NÓS</a>
+                        <a href="homepage.html#contatenos" class="btnTipo1">CONTATE-NOS</a>
+                        <a href="homepage.html#sobre_nos" class="btnTipo1">SOBRE NÓS</a>
+                        <a class="btnTipo1" id="perfilBtn" href="../html/userPage.html">PERFIL</a>
                         <a class="btnTipo2" id="loginBtn">LOGIN</a>
-                        <a class="btnTipo2">DOE AGORA!</a>
+                        <a href="../html/campanhas.html" class="btnTipo2">DOE AGORA</a>
                     </nav>
+                    <div class="dropdown">
+                        <button class="btn btn_dropdown btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-list-ul" style="color: #ffffff;"></i> </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a href="homepage.html#contatenos" class="btnTipo_bb">CONTATE-NOS</a><br>
+                            <a href="homepage.html#sobre_nos" class="btnTipo_bb">SOBRE NÓS</a><br>
+                            <a class="btnTipo_bb" id="perfilBtn" href="../html/userPage.html">PERFIL</a><br>
+                            <a class="btnTipo_bb" id="loginBtn">LOGIN</a><br>
+                            <a href="../html/campanhas.html" class="btnTipo_bb">DOE AGORA</a><br>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+    
         </div>
+    
+    
     </header>
 
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close" id="closeBtn">&times;</span>
+        <h2>Login</h2>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="emailModal" name="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="passwordModal" name="password" required>
+
+            <button onclick="login()" type="button">Entrar</button>
+        </form>
+        <p>Não tem uma conta? <a href="../html/cadastro.html">Cadastre-se</a></p>
+    </div>
+</div>
+
     <div class="container">
-        <!--
-            <div>
-                <img id="fazerPix" src="" alt="QR Code">
-            </div>
-        -->
         <h2>Cadastro de Usuário</h2>
         <form>
             <div class="form-group">
@@ -60,8 +92,8 @@
                 <input type="text" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="profile-picture">Imagem de Perfil</label>
-                <input type="file" id="profile-picture" name="profile-picture">
+                <label for="profile-picture">Imagem de Perfil (URL)</label>
+                <input type="text" id="profile-picture" name="profile-picture">
             </div>
             <div class="form-group">
                 <button type="submit" onclick="cadastrar(event)">Cadastrar</button>

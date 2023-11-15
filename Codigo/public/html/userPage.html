@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2023 Encorajarte" />
+    <meta name="authors"
+        content="Amanda M de Souza, Guilherme D Silva, Luiz Gustavo M Santos, Pedro R Vidigal, Giovanni B S Duarte, Vitor N Calhau" />
+    <meta name="description" content="Sistema de gerenciamento e divulgação de campanhas beneficentes artísticas" />
+    <meta name="keywords" content="controle, gerenciamento" />
+    <!-- Style -->
+    <!-- Bootstrap v4.0 -->
+
+    <!-- Main -->
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/userPage.css">
+    <script src="../script.js" defer></script>
+    <script src="../js/homepage.js" defer></script>
+
+    <!-- Script -->
+    <!-- Bootstrap v4.0 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- Main -->
+        <script src="../js/main.js" defer></script>
+        <script src="../js/userPage.js" defer></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <!-- Título da página -->
+    <title>Encorajarte - Perfil</title>
+</head>
+
+<body onload="estaLogado(0)">
+    <body>
+        <header>
+            <div class="cabecalho">
+                <div class="cabecalho_e">
+                    <a href="../html/homepage.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
+                </div>
+                <div class="cabecalho_d">
+        
+                    <div class="cabecalho_btns">
+                        <nav>
+                            <a href="homepage.html#contatenos" class="btnTipo1">CONTATE-NOS</a>
+                            <a href="homepage.html#sobre_nos" class="btnTipo1">SOBRE NÓS</a>
+                            <a class="btnTipo1" id="perfilBtn" href="../html/userPage.html">PERFIL</a>
+                            <a class="btnTipo2" id="loginBtn">LOGIN</a>
+                            <a href="../html/campanhas.html" class="btnTipo2">DOE AGORA</a>
+                        </nav>
+                        <div class="dropdown">
+                            <button class="btn btn_dropdown btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-list-ul" style="color: #ffffff;"></i> </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="homepage.html#contatenos" class="btnTipo_bb">CONTATE-NOS</a><br>
+                                <a href="homepage.html#sobre_nos" class="btnTipo_bb">SOBRE NÓS</a><br>
+                                <a class="btnTipo_bb" id="perfilBtn" href="../html/userPage.html">PERFIL</a><br>
+                                <a class="btnTipo_bb" id="loginBtn">LOGIN</a><br>
+                                <a href="../html/campanhas.html" class="btnTipo_bb">DOE AGORA</a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        
+        
+        </header>
+    
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" id="closeBtn">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="emailModal" name="email" required>
+    
+                <label for="password">Senha:</label>
+                <input type="password" id="passwordModal" name="password" required>
+    
+                <button onclick="login()" type="button">Entrar</button>
+            </form>
+            <p>Não tem uma conta? <a href="../html/cadastro.html">Cadastre-se</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+      <div class="dados">
+        <div class="sectionDados" id="sectionDados">
+        </div>
+        <div class="sectionAlterarDados">
+          <h3>Alterar dados</h3>
+          <p>Novo nome:</p>
+          <input type="text" type="text" id="nome" />
+          <p>Nova senha:</p>
+          <input type="text" type="password" id="senha"/>
+          <button class="botaoAlterar" onclick="alterarDados()" >Confirmar Mudanças</button>
+        </div>
+      </div>  
+      <div class="doacao">
+        <h2>Suas doações</h2>
+        <div class="cards" id="cards">
+        </div>    
+  
+      </div>
+    </div>
+  </body>
+</html>

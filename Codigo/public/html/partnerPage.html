@@ -29,37 +29,72 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"
         defer></script>
     <!-- Main -->
+        <script src="../js/homepage.js" defer></script>
+        <script src="../js/main.js" defer></script>
         <script src="../js/imagem.js" defer></script>
         <script src="../js/gerenciarParceiro.js" defer></script>
+        <script src="../script.js" defer></script>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <!-- Título da página -->
     <title>Pagina do Parceiro</title>
 </head>
-<body onload="carregarDados()">
-    <header>
-        <div class="cabecalho">
-            <div class="cabecalho_e">
-                <a href="../index.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
-            </div>
-            <div class="cabecalho_d">
-
-                <div class="cabecalho_btns">
-                    <nav>
-                        <a class="btnTipo1">CONTATE-NOS</a>
-                        <a class="btnTipo1">SOBRE NÓS</a>
-                        <a class="btnTipo2" id="loginBtn">LOGIN</a>
-                        <a class="btnTipo2">DOE AGORA</a>
-                    </nav>
+<body onload="carregarDados(),estaLogado(1)">
+    <body>
+        <header>
+            <div class="cabecalho">
+                <div class="cabecalho_e">
+                    <a href="../html/homepage.html"><img id="logo" src="../assets/img/encorajarte_logo.jpeg"></a>
                 </div>
+                <div class="cabecalho_d">
+        
+                    <div class="cabecalho_btns">
+                        <nav>
+                            <a href="homepage.html#contatenos" class="btnTipo1">CONTATE-NOS</a>
+                            <a href="homepage.html#sobre_nos" class="btnTipo1">SOBRE NÓS</a>
+                            <a class="btnTipo1" id="perfilBtn" href="../html/userPage.html">PERFIL</a>
+                            <a class="btnTipo2" id="loginBtn">LOGIN</a>
+                            <a href="../html/campanhas.html" class="btnTipo2">DOE AGORA</a>
+                        </nav>
+                        <div class="dropdown">
+                            <button class="btn btn_dropdown btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-list-ul" style="color: #ffffff;"></i> </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="homepage.html#contatenos" class="btnTipo_bb">CONTATE-NOS</a><br>
+                                <a href="homepage.html#sobre_nos" class="btnTipo_bb">SOBRE NÓS</a><br>
+                                <a class="btnTipo_bb" id="perfilBtn" href="../html/userPage.html">PERFIL</a><br>
+                                <a class="btnTipo_bb" id="loginBtn">LOGIN</a><br>
+                                <a href="../html/campanhas.html" class="btnTipo_bb">DOE AGORA</a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
             </div>
+        
+        
+        </header>
+    
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" id="closeBtn">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="emailModal" name="email" required>
+    
+                <label for="password">Senha:</label>
+                <input type="password" id="passwordModal" name="password" required>
+    
+                <button onclick="login()" type="button">Entrar</button>
+            </form>
+            <p>Não tem uma conta? <a href="../html/cadastro.html">Cadastre-se</a></p>
         </div>
-    </header>    
-    <div class="Title">
-            <div class="nomeParceiro">
-            <h1 id="nome">Nome</h1>
-            <button onclick="alterarInput()">Alterar</button>
-            </div>
+    </div>
+    
+    <div class="col-12" id="titulo">
+        <h2 id="nome" name="id_1" contenteditable="true"> Nome da campanha <i class="bi bi-pencil-square ml-1" aria-readonly="true"></i></h2>
     </div>
     <div class="form-container">
         <div class="form-section">
@@ -81,9 +116,10 @@
         <div class="form-section-image">
             <div class="Imagem">
                 <h2>Foto de perfil</h2>
-                <input type="file" class="form-control" id="foto-input" onchange='previewFile("foto")'><br>
-                <div class="imgPreview">
-                    <img src="" alt="Prévia da imagem..." id="foto" name="">
+                <label for="infoUrl">Url da imagem: </label>
+                <input type="text" id="urlImg" class="form-control" id="foto-input" onchange='previewFile()'><br>
+                <div class="imgPreview" id="imgPreview">
+                   
                 </div>
             </div>
             <div class="Dados">
