@@ -1,8 +1,5 @@
 -- DROP DATABASE encorajarte;
 
-CREATE DATABASE encorajarte;
-USE encorajarte;
-
 CREATE TABLE usuario (
   id SERIAL PRIMARY KEY,
   nome VARCHAR(45) NOT NULL,
@@ -33,7 +30,7 @@ CREATE TABLE campanha (
   objetivo VARCHAR(300) NOT NULL,
   finalidade VARCHAR(300) NOT NULL,
   meta DECIMAL NOT NULL,
-  siteCampanha VARCHAR(45) NULL
+  siteCampanha VARCHAR(45) null,
   chavePix VARCHAR(20) NULL
 );
 

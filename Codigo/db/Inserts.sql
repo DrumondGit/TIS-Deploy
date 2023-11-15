@@ -1,9 +1,9 @@
 
 INSERT INTO usuario
 (id, nome, senha, email, permissao, imagemperfil)
-VALUES(nextval('usuario_id_seq'::regclass), 'Luiz', 12345, 'Luiz@gmail', 1, null),
-(nextval('usuario_id_seq'::regclass), 'Gustavo', 12345, 'Gustavo@gmail', 0, null),
-(nextval('usuario_id_seq'::regclass), 'Amanda', 12345, 'Amanda@gmail', 1, null);
+VALUES(nextval('usuario_id_seq'::regclass), 'Luiz', 12345, 'Luiz@gmail', 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mo1-1RPPCSd54lH3fcOeOWM1wRHxEZ3C1A&usqp=CAU'),
+(nextval('usuario_id_seq'::regclass), 'Gustavo', 12345, 'Gustavo@gmail', 0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mo1-1RPPCSd54lH3fcOeOWM1wRHxEZ3C1A&usqp=CAU'),
+(nextval('usuario_id_seq'::regclass), 'Amanda', 12345, 'Amanda@gmail', 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mo1-1RPPCSd54lH3fcOeOWM1wRHxEZ3C1A&usqp=CAU');
 
 INSERT INTO campanha
 (id, nome, objetivo, finalidade, meta, sitecampanha)
@@ -29,3 +29,36 @@ VALUES
 ('../assets/img/parceiro1.png', 'Parceiro 4', 'Objetivo 4', 'CNPJ 4', 'Endereço 4', 'Telefone 4', 'Email 4', 'Instagram 4', 'Facebook 4', 'Site 4', 'Nosso trabalho 4'),
 ('../assets/img/parceiro1.png', 'Parceiro 5', 'Objetivo 5', 'CNPJ 5', 'Endereço 5', 'Telefone 5', 'Email 5', 'Instagram 5', 'Facebook 5', 'Site 5', 'Nosso trabalho 5');
 
+INSERT INTO comentario
+(idcomentario, texto, "data", usuario_id, campanha_id)
+VALUES(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 1, 1),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 2, 1),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 3, 1),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 1, 2),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 2, 2),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 3, 2),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 1, 3),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 2, 3),
+(nextval('comentario_idcomentario_seq'::regclass), 'Muito boa camapnha', now(), 3, 3);
+
+INSERT INTO parceiro_has_campanha (parceiro_id, campanha_id)
+VALUES 
+  (nextval('parceiro_has_campanha_parceiro_id_seq'::regclass), nextval('parceiro_has_campanha_campanha_id_seq'::regclass)),
+  (nextval('parceiro_has_campanha_parceiro_id_seq'::regclass), nextval('parceiro_has_campanha_campanha_id_seq'::regclass)),
+  (nextval('parceiro_has_campanha_parceiro_id_seq'::regclass), nextval('parceiro_has_campanha_campanha_id_seq'::regclass)),
+  (nextval('parceiro_has_campanha_parceiro_id_seq'::regclass), nextval('parceiro_has_campanha_campanha_id_seq'::regclass));
+
+  INSERT INTO postgres.imagem
+(id, imagem, campanha_id, principal)
+VALUES(nextval('imagem_id_seq'::regclass), 'https://i.pinimg.com/originals/cd/bc/f0/cdbcf077b62246123f74fcc919587b0b.jpg', 1, 0),
+(nextval('imagem_id_seq'::regclass), 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-XvvMFfz2sf5o2MNsvg8TYgY3YeL0YgJmmA&usqp=CAU', 1, 0),
+(nextval('imagem_id_seq'::regclass), 'https://www.imgacademy.com/sites/default/files/2016-performance-about.jpg', 1, 0),
+(nextval('imagem_id_seq'::regclass), 'https://i.pinimg.com/originals/cd/bc/f0/cdbcf077b62246123f74fcc919587b0b.jpg', 2, 0),
+(nextval('imagem_id_seq'::regclass), 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-XvvMFfz2sf5o2MNsvg8TYgY3YeL0YgJmmA&usqp=CAU', 2, 0),
+(nextval('imagem_id_seq'::regclass), 'https://www.imgacademy.com/sites/default/files/2016-performance-about.jpg', 2, 0),
+(nextval('imagem_id_seq'::regclass), 'https://i.pinimg.com/originals/cd/bc/f0/cdbcf077b62246123f74fcc919587b0b.jpg', 4, 0),
+(nextval('imagem_id_seq'::regclass), 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-XvvMFfz2sf5o2MNsvg8TYgY3YeL0YgJmmA&usqp=CAU', 4, 0),
+(nextval('imagem_id_seq'::regclass), 'https://www.imgacademy.com/sites/default/files/2016-performance-about.jpg', 4, 0),
+(nextval('imagem_id_seq'::regclass), 'https://i.pinimg.com/originals/cd/bc/f0/cdbcf077b62246123f74fcc919587b0b.jpg', 3, 0),
+(nextval('imagem_id_seq'::regclass), 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-XvvMFfz2sf5o2MNsvg8TYgY3YeL0YgJmmA&usqp=CAU', 3, 0),
+(nextval('imagem_id_seq'::regclass), 'https://www.imgacademy.com/sites/default/files/2016-performance-about.jpg', 3, 0);
