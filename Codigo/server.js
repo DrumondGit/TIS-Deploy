@@ -401,7 +401,10 @@ app.post("/viewCampanha", async function (req, res) {
     objetivo: con.rows[0].objetivo,
     finalidade: con.rows[0].finalidade,
     site: con.rows[0].sitecampanha,
-    meta: con.rows[0].meta
+    meta: con.rows[0].meta,
+    link10: con.rows[0].link10,
+    link20: con.rows[0].link20,
+    link50: con.rows[0].link50
   });
 });
 

@@ -213,7 +213,7 @@ function fazerPix() {
 
 function puxarCampanha() {
     const id = Number(sessionStorage.getItem("id"))
-
+linksPagamento(id)
     fetch("https://encorajarte.onrender.com/ReadCampanha", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -355,4 +355,47 @@ function comentar() {
             });
         })
     }
+}
+
+async function linksPagamento(id) {
+    const res = await fetch("https://encorajarte.onrender.com/viewCampanha", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id
+        })
+    })
+
+    const data = await res.json()
+
+    if(data.link10 == null) {
+        document.getElementById("link10reais").setAttribute("onclick", "semLinkPagamento()")
+        document.getElementById("link10reais").setAttribute("href", "#")
+        document.getElementById("link10reais").setAttribute("target", "_self")
+    } else {
+        document.getElementById("link10reais").setAttribute("href", data.link10)
+        document.getElementById("link10reais").setAttribute("target", "_blank")
+    }
+
+    if(data.link20 == null) {
+        document.getElementById("link20reais").setAttribute("onclick", "semLinkPagamento()")
+        document.getElementById("link20reais").setAttribute("href", "#")
+        document.getElementById("link20reais").setAttribute("target", "_self")
+    } else {
+        document.getElementById("link20reais").setAttribute("href", data.link20)
+        document.getElementById("link20reais").setAttribute("target", "_blank")
+    }
+
+    if(data.link50 == null) {
+        document.getElementById("link50reais").setAttribute("onclick", "semLinkPagamento()")
+        document.getElementById("link50reais").setAttribute("href", "#")
+        document.getElementById("link50reais").setAttribute("target", "_self")
+    } else {
+        document.getElementById("link50reais").setAttribute("href", data.link50)
+        document.getElementById("link50reais").setAttribute("target", "_blank")
+    }
+}
+
+function semLinkPagamento() {
+    window.alert("Essa campanha ainda não tem um link de pagamento definido.\nDê uma olhada nos outros parceiros do nosso site!!")
 }

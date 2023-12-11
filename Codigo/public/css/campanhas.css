@@ -117,7 +117,7 @@ button:hover {
     flex-direction: column;
     height: 180px;
     margin: 0px;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .info {
@@ -125,7 +125,7 @@ button:hover {
 }
 
 .objetivo, .meta, .nosso_trabalho {
-    font-size: 14px;
+    font-size: 18px;
     margin: 0px;
     margin-bottom: 7px;
 }

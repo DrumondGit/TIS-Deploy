@@ -31,7 +31,10 @@ CREATE TABLE campanha (
   finalidade VARCHAR(300) NOT NULL,
   meta DECIMAL NOT NULL,
   siteCampanha VARCHAR(45) null,
-  chavePix VARCHAR(20) NULL
+  chavePix VARCHAR(20) NULL,
+  link10 VARCHAR(50) null,
+  link20 VARCHAR(50) null,
+  link50 VARCHAR(50) null
 );
 
 CREATE TABLE imagem (
